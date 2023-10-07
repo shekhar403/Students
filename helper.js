@@ -20,7 +20,7 @@ export async function getStudentFromDB(studentId) {
     return result
 }
 
-export async function getAllUnassignedStudents(studentId) {
+export async function getAllUnassignedStudents() {
     const cursor = studentCollection.find({ mentor: undefined });
     let students = [];
 
@@ -59,7 +59,7 @@ export async function addMentorToStudent(studentId, mentorId) {
           pastMentors: mentorId,
         },
       };
-      
+
     const result = await studentCollection.updateOne({ id: studentId }, update);
     return result
 }

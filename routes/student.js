@@ -25,7 +25,12 @@ studentRouter.post("/addStudent", async (req, res) => {
 studentRouter.get("/", async (req, res) => {
     let studentsNotAssigned = await helper.getAllUnassignedStudents();
 
-    console.log(studentsNotAssigned);
+    if (studentsNotAssigned) {
+        res.send(studentsNotAssigned);
+    }
+    else {
+        res.status(404).send("Some error occurred! Please try again");
+    }
 })
 
 // Assigns or updates mentor of a student
