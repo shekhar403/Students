@@ -61,3 +61,15 @@ mentorRouter.get("/assignedStudents/:mentorId", async (req, res) => {
         res.status(404).send("Some error occurred! Please try again");
     }
 })
+
+// gets all existing students in DB
+mentorRouter.get("/", async (req, res) => {
+    let mentors = await helper.getAllMentors();
+
+    if (mentors) {
+        res.send(mentors);
+    }
+    else {
+        res.status(404).send("Some error occurred! Please try again");
+    }
+})

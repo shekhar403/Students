@@ -31,6 +31,28 @@ export async function getAllUnassignedStudents() {
     return students
 }
 
+export async function getAllStudents() {
+    const cursor = studentCollection.find();
+    let students = [];
+
+    for await (const student of cursor) {
+        students.push(student);
+    }
+
+    return students
+}
+
+export async function getAllMentors() {
+    const cursor = mentorCollection.find();
+    let mentors = [];
+
+    for await (const mentor of cursor) {
+        mentors.push(mentor);
+    }
+
+    return mentors
+}
+
 export async function assignStudentsToMentor(mentorId, updatedStudents) {
     const update = { $push : {
         "students" : {
