@@ -22,7 +22,7 @@ studentRouter.post("/addStudent", async (req, res) => {
 })
 
 // gets the students who are not assigned to any mentors yet
-studentRouter.get("/", async (req, res) => {
+studentRouter.get("/unassigned", async (req, res) => {
     let studentsNotAssigned = await helper.getAllUnassignedStudents();
 
     if (studentsNotAssigned) {
